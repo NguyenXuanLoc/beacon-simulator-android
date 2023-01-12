@@ -430,6 +430,13 @@ public class FragmentScanner extends Fragment {
             holder.specificContent.setVisibility(typeMessage.isEmpty() ? View.GONE : View.VISIBLE);
             holder.specificContentSub.setText(subTypeMessage);
             holder.specificContentSub.setVisibility(subTypeMessage.isEmpty() ? View.GONE : View.VISIBLE);
+            if (getBeaconTypeImage(scanResult) == (R.drawable.ic_beacon_misc)) {
+                holder.mac.setVisibility(View.GONE);
+                holder.rssi.setVisibility(View.GONE);
+                holder.beaconType.setVisibility(View.GONE);
+                holder.specificContent.setVisibility(View.GONE);
+                holder.specificContentSub.setVisibility(View.GONE);
+            }
         }
 
         private int getBeaconTypeImage(ScanResult scanResult) {
@@ -457,7 +464,7 @@ public class FragmentScanner extends Fragment {
                     return R.drawable.ic_beacon_eddystone;
                 }
             }
-            return BeaconType.raw.getImageResource();
+            return 0;
         }
 
         private String[] getBeaconTypeContent(ScanResult scanResult) {
